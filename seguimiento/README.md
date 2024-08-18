@@ -1,5 +1,13 @@
 # React + TypeScript + Vite
 
+To run the code:
+
+1) Open the folder seguimiento in the command terminal
+
+2) Type npm i to install the necessary packages
+
+3) Type npm run dev to run the code
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
