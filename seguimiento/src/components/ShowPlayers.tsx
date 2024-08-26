@@ -33,31 +33,24 @@ export const ShowPlayers = () => {
             console.log("Number is not valid:", number);
             return [];
         }
-
+    
         const pairs: { player1: playerDB, player2: playerDB }[] = [];
-        const uniquePairs: { [key: number]: boolean } = {};
-
+    
         const sortedPlayers = [...players].sort((a, b) => a.h_in - b.h_in);
-
+    
         let low = 0;
         let high = sortedPlayers.length - 1;
-
+    
         while (low < high) {
             const lowHeight = Number(sortedPlayers[low].h_in);
             const highHeight = Number(sortedPlayers[high].h_in);
             const sum = lowHeight + highHeight;
-
+    
             if (sum === number) {
-                if (!uniquePairs[lowHeight] || !uniquePairs[highHeight]) {
-                    
-                    uniquePairs[lowHeight] = true;
-                    uniquePairs[highHeight] = true;
-
-                    pairs.push({
-                        player1: sortedPlayers[low],
-                        player2: sortedPlayers[high],
-                    });
-                }
+                pairs.push({
+                    player1: sortedPlayers[low],
+                    player2: sortedPlayers[high],
+                });
                 low++;
                 high--;
             } else if (sum > number) {
@@ -66,10 +59,11 @@ export const ShowPlayers = () => {
                 low++;
             }
         }
-
+    
         console.log("Pairs found:", pairs);
         return pairs;
     }
+    
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
